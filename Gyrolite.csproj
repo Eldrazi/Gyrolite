@@ -49,6 +49,7 @@
     <Compile Include="Gyrolite.cs" />
     <Compile Include="GyroliteGlobalNPC.cs" />
     <Compile Include="Items\Accessories\KrohitsusWings.cs" />
+    <Compile Include="Items\Accessories\YoyoStringBall.cs" />
     <Compile Include="Items\Armor\AurawoodBreastplate.cs" />
     <Compile Include="Items\Armor\AurawoodGreaves.cs" />
     <Compile Include="Items\Armor\AurawoodHelmet.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Items\Weapons\Tools\FrostrunkHammer.cs" />
     <Compile Include="Items\Weapons\Tools\AetherstumpHammer.cs" />
     <Compile Include="Items\Weapons\Tools\GlacialPickaxe.cs" />
+    <Compile Include="Items\Weapons\Yoyos\TheProbe.cs" />
     <Compile Include="Items\Weapons\Yoyos\Treasure.cs" />
     <Compile Include="NPCs\AuraticMass.cs" />
     <Compile Include="NPCs\Bosses\WispQueen\WispQueen.cs" />
@@ -181,6 +183,7 @@
     <Compile Include="Projectiles\Thrown\CactusDagger.cs" />
     <Compile Include="Projectiles\Thrown\CactusSpine.cs" />
     <Compile Include="Projectiles\TrueMuramasaBeam.cs" />
+    <Compile Include="Projectiles\Yoyo\TheProbe.cs" />
     <Compile Include="Projectiles\Yoyo\Treasure.cs" />
     <Compile Include="Projectiles\_ProjectileExtras.cs" />
     <Compile Include="Tiles\Aurasand.cs" />
@@ -237,6 +240,7 @@
     <Content Include="Dusts\VortexDust.png" />
     <Content Include="Items\Accessories\KrohitsusWings.png" />
     <Content Include="Items\Accessories\KrohitsusWings_Wings.png" />
+    <Content Include="Items\Accessories\YoyoStringBall.png" />
     <Content Include="Items\Armor\AurawoodBreastplate.png" />
     <Content Include="Items\Armor\AurawoodBreastplate_Arms.png" />
     <Content Include="Items\Armor\AurawoodBreastplate_Body.png" />
@@ -302,6 +306,7 @@
     <Content Include="Items\Weapons\Tools\FrostrunkHammer.png" />
     <Content Include="Items\Weapons\Melee\FrostrunkSword.png" />
     <Content Include="Items\Weapons\Tools\GlacialPickaxe.png" />
+    <Content Include="Items\Weapons\Yoyos\TheProbe.png" />
     <Content Include="Items\Weapons\Yoyos\Treasure.png" />
     <Content Include="NPCs\AuraticMass.png" />
     <Content Include="NPCs\Bosses\WispQueen\WispQueen.png" />
@@ -378,6 +383,7 @@
     <Content Include="Projectiles\Thrown\CactusDagger.png" />
     <Content Include="Projectiles\Thrown\CactusSpine.png" />
     <Content Include="NPCs\PocketMimic.png" />
+    <Content Include="Projectiles\Yoyo\TheProbe.png" />
     <Content Include="Projectiles\Yoyo\Treasure.png" />
     <Content Include="Tiles\Aurasand.png" />
     <Content Include="Tiles\Aurastone.png" />
