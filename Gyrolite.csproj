@@ -46,6 +46,7 @@
     <Compile Include="Dusts\RegenSparkle.cs" />
     <Compile Include="Dusts\ToxinCloud.cs" />
     <Compile Include="Dusts\VortexDust.cs" />
+    <Compile Include="GyrolitePlayer.cs" />
     <Compile Include="Gyrolite.cs" />
     <Compile Include="GyroliteGlobalNPC.cs" />
     <Compile Include="Items\Accessories\KrohitsusWings.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Items\Weapons\Tools\FrostrunkHammer.cs" />
     <Compile Include="Items\Weapons\Tools\AetherstumpHammer.cs" />
     <Compile Include="Items\Weapons\Tools\GlacialPickaxe.cs" />
+    <Compile Include="Items\Weapons\Yoyos\Entruder.cs" />
     <Compile Include="Items\Weapons\Yoyos\TheProbe.cs" />
     <Compile Include="Items\Weapons\Yoyos\Treasure.cs" />
     <Compile Include="NPCs\AuraticMass.cs" />
@@ -159,8 +161,15 @@
     <Compile Include="Projectiles\Alchemist\GaseousToxinJar.cs" />
     <Compile Include="Projectiles\Alchemist\IrritationFlask.cs" />
     <Compile Include="Projectiles\AurasandBall.cs" />
+    <Compile Include="Projectiles\Boomerangs\AuricSlicer.cs" />
+    <Compile Include="Projectiles\Boomerangs\SolarOrbit.cs" />
+    <Compile Include="Projectiles\Boomerangs\SoulsticeCutter.cs" />
+    <Compile Include="Projectiles\Flails\AuricFlail.cs" />
+    <Compile Include="Projectiles\Flails\CoreFlail.cs" />
+    <Compile Include="Projectiles\Flails\NecroFlail.cs" />
     <Compile Include="Projectiles\Magic\UnscratchedWispBeam_Friendly.cs" />
     <Compile Include="Projectiles\Magic\UnscratchedWispHandle_Friendly.cs" />
+    <Compile Include="Projectiles\Spears\SteampunkSpear.cs" />
     <Compile Include="Projectiles\Summoner\AjiwrenchMinion.cs" />
     <Compile Include="Projectiles\Summoner\BlueSlimeMinion.cs" />
     <Compile Include="Projectiles\Magic\GreekFire.cs" />
@@ -183,6 +192,7 @@
     <Compile Include="Projectiles\Thrown\CactusDagger.cs" />
     <Compile Include="Projectiles\Thrown\CactusSpine.cs" />
     <Compile Include="Projectiles\TrueMuramasaBeam.cs" />
+    <Compile Include="Projectiles\Yoyo\Entruder.cs" />
     <Compile Include="Projectiles\Yoyo\TheProbe.cs" />
     <Compile Include="Projectiles\Yoyo\Treasure.cs" />
     <Compile Include="Projectiles\_ProjectileExtras.cs" />
@@ -217,11 +227,8 @@
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Microsoft.Xna.Framework.Xact.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="Terraria">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
-    </Reference>
     <Reference Include="tModLoader">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoader.exe</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoader.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -306,6 +313,7 @@
     <Content Include="Items\Weapons\Tools\FrostrunkHammer.png" />
     <Content Include="Items\Weapons\Melee\FrostrunkSword.png" />
     <Content Include="Items\Weapons\Tools\GlacialPickaxe.png" />
+    <Content Include="Items\Weapons\Yoyos\Entruder.png" />
     <Content Include="Items\Weapons\Yoyos\TheProbe.png" />
     <Content Include="Items\Weapons\Yoyos\Treasure.png" />
     <Content Include="NPCs\AuraticMass.png" />
@@ -351,8 +359,21 @@
     <Content Include="Projectiles\Alchemist\GaseousVacuumJar.png" />
     <Content Include="Projectiles\Alchemist\GaseousStaticJar.png" />
     <Content Include="Projectiles\Alchemist\IrritationFlask.png" />
+    <Content Include="Projectiles\Boomerangs\AuricSlicer.png" />
+    <Content Include="Projectiles\Boomerangs\SolarOrbit.png" />
+    <Content Include="Projectiles\Boomerangs\SoulsticeCutter.png" />
+    <Content Include="Projectiles\Chains\AuricFlail_Chain.png" />
+    <Content Include="Projectiles\Chains\CoreFlail_Chain.png" />
+    <Content Include="Projectiles\Chains\NecroFlail_Chain.png" />
+    <Content Include="Projectiles\Chains\RadiantFlail_Chain.png" />
+    <Content Include="Projectiles\Chains\SoulsticeFlail_Chain.png" />
+    <Content Include="Projectiles\Flails\AuricFlail.png" />
+    <Content Include="Projectiles\Flails\CoreFlail.png" />
+    <Content Include="Projectiles\Flails\NecroFlail.png" />
+    <Content Include="Projectiles\Flails\RadiantFlail.png" />
     <Content Include="Projectiles\Magic\UnscratchedWispBeam_Friendly.png" />
     <Content Include="Projectiles\Magic\UnscratchedWispHandle_Friendly.png" />
+    <Content Include="Projectiles\Spears\SteampunkSpear.png" />
     <Content Include="Projectiles\Summoner\AjiwrenchMinion1.png" />
     <Content Include="Projectiles\Summoner\AjiwrenchMinion2.png" />
     <Content Include="Projectiles\Summoner\AjiwrenchMinion3.png" />
@@ -383,6 +404,7 @@
     <Content Include="Projectiles\Thrown\CactusDagger.png" />
     <Content Include="Projectiles\Thrown\CactusSpine.png" />
     <Content Include="NPCs\PocketMimic.png" />
+    <Content Include="Projectiles\Yoyo\Entruder.png" />
     <Content Include="Projectiles\Yoyo\TheProbe.png" />
     <Content Include="Projectiles\Yoyo\Treasure.png" />
     <Content Include="Tiles\Aurasand.png" />

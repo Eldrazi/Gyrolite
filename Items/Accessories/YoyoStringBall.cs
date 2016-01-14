@@ -23,7 +23,15 @@ namespace Gyrolite.Items.Accessories
         }
         public override void UpdateAccessory(Player player)
         {
-            //yoyostring ball thing
+            Gyrolite.GetPlayer(player).yoyoStringBall = true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.DirtBlock);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

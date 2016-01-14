@@ -305,6 +305,12 @@ namespace Gyrolite.Projectiles
             {
                 num7 = num7 * 1.25f + 30f;
             }
+            // take this part out if we were ever to release this :P
+            if (Gyrolite.GetPlayer(Main.player[projectile.owner]).yoyoStringBall)
+            {
+                num7 += 112f;
+            }
+            //
             num7 /= (1f + Main.player[projectile.owner].meleeSpeed * 3f) / 4f;
             num6 /= (1f + Main.player[projectile.owner].meleeSpeed * 3f) / 4f;
             float num10 = 14f - num6 / 2f;

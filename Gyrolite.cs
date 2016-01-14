@@ -29,5 +29,9 @@ namespace Gyrolite
             Player player = spawnInfo.player;
             return !player.ZoneJungle && !player.ZoneDungeon && !player.ZoneCorrupt && !player.ZoneCrimson && !player.ZoneHoly && !player.ZoneSnow && !player.ZoneUndergroundDesert;
         }
+        public static GyrolitePlayer GetPlayer(Player player)
+        {
+            return (GyrolitePlayer)player.GetModPlayer(ModLoader.GetMod("Gyrolite"), "GyrolitePlayer");
+        }
     }
 }
