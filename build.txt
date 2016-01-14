@@ -1,0 +1,3 @@
+﻿author = Soulkeeper Krohitsu
+version = v0.0.1
+displayName = The Gyrolite Mod

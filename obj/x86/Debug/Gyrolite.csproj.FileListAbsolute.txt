@@ -1,0 +1,2 @@
+C:\Users\Rob Kuijper - IceMan\Documents\My Games\Terraria\ModLoader\Mod Sources\Gyrolite\obj\x86\Debug\Gyrolite.csprojResolveAssemblyReference.cache
+C:\Users\Josh\Documents\GitHub\Gyrolite\Gyrolite\obj\x86\Debug\Gyrolite.csprojResolveAssemblyReference.cache

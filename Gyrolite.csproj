@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EF9CB0C6-B4C2-455D-9E63-DF9B3ABB485A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gyrolite</RootNamespace>
+    <AssemblyName>Gyrolite</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Buffs\AjiwrenchMinionBuff.cs" />
+    <Compile Include="Buffs\BlueSlimeMinionBuff.cs" />
+    <Compile Include="Buffs\LightBarrier.cs" />
+    <Compile Include="Buffs\LightBunker.cs" />
+    <Compile Include="Buffs\HeavySlimeMinionBuff.cs" />
+    <Compile Include="Buffs\MagmaticSlimeMinionBuff.cs" />
+    <Compile Include="Buffs\YellowSlimeMinionBuff.cs" />
+    <Compile Include="Buffs\RedSlimeMinionBuff.cs" />
+    <Compile Include="Buffs\LightShield.cs" />
+    <Compile Include="Dusts\RegenSparkle.cs" />
+    <Compile Include="Dusts\ToxinCloud.cs" />
+    <Compile Include="Dusts\VortexDust.cs" />
+    <Compile Include="Gyrolite.cs" />
+    <Compile Include="GyroliteGlobalNPC.cs" />
+    <Compile Include="Items\Accessories\KrohitsusWings.cs" />
+    <Compile Include="Items\Armor\AurawoodBreastplate.cs" />
+    <Compile Include="Items\Armor\AurawoodGreaves.cs" />
+    <Compile Include="Items\Armor\AurawoodHelmet.cs" />
+    <Compile Include="Items\Armor\OreArmor\RadiantHelmet.cs" />
+    <Compile Include="Items\Consumables\EnsorcelledWisp.cs" />
+    <Compile Include="Items\Misc\PermafrostCrystal.cs" />
+    <Compile Include="Items\Misc\SoulYellowSlime.cs" />
+    <Compile Include="Items\Misc\SoulRedSlime.cs" />
+    <Compile Include="Items\Misc\SoulMagmaSlime.cs" />
+    <Compile Include="Items\Misc\SoulBlueSlime.cs" />
+    <Compile Include="Items\Misc\SpiritOfAura.cs" />
+    <Compile Include="Items\Misc\SpiritOfTheCore.cs" />
+    <Compile Include="Items\Misc\GaseousStaticMixture.cs" />
+    <Compile Include="Items\Misc\GaseousVacuumMixture.cs" />
+    <Compile Include="Items\Misc\GaseousRegenerativeMixture.cs" />
+    <Compile Include="Items\Misc\GaseousToxinMixture.cs" />
+    <Compile Include="Items\Misc\SpiritOfAetheris.cs" />
+    <Compile Include="Items\Misc\WispSoul.cs" />
+    <Compile Include="Items\Placeable\AurastoneBrick.cs" />
+    <Compile Include="Items\Placeable\Basalt.cs" />
+    <Compile Include="Items\Placeable\GlacialStoneOre.cs" />
+    <Compile Include="Items\Placeable\MagmaCrystal.cs" />
+    <Compile Include="Items\Placeable\PermafrostAsh.cs" />
+    <Compile Include="Items\Placeable\PermafrostHellstoneBrick.cs" />
+    <Compile Include="Items\Placeable\PermafrostObsidianBrick.cs" />
+    <Compile Include="Items\Placeable\VulcanicCore.cs" />
+    <Compile Include="Items\Placeable\DarkAurastoneBrick.cs" />
+    <Compile Include="Items\Placeable\LightAurastoneBrick.cs" />
+    <Compile Include="Items\Placeable\SoulIce.cs" />
+    <Compile Include="Items\Weapons\Alchemist\CopperFlaskLauncher.cs" />
+    <Compile Include="Items\Weapons\Alchemist\TinPotionLauncher.cs" />
+    <Compile Include="Items\Weapons\Alchemist\SteamConcoctionPropeller.cs" />
+    <Compile Include="Items\Weapons\Alchemist\NitrogenBlaster.cs" />
+    <Compile Include="Items\Weapons\Magic\LightBunkerTome.cs" />
+    <Compile Include="Items\Weapons\Magic\LightBarrierTome.cs" />
+    <Compile Include="Items\Weapons\Magic\UnscratchedWisp.cs" />
+    <Compile Include="Items\Weapons\Melee\AetherstumpSword.cs" />
+    <Compile Include="Items\Weapons\Melee\FrostrunkSword.cs" />
+    <Compile Include="Items\Weapons\Summoner\EarthRuneStaff.cs" />
+    <Compile Include="Items\Weapons\Summoner\HeavySlimeStaff.cs" />
+    <Compile Include="Items\Weapons\Summoner\MagmaticSlimeStaff.cs" />
+    <Compile Include="Items\Weapons\Summoner\YellowSlimeStaff.cs" />
+    <Compile Include="Items\Weapons\Alchemist\GaseousVacuumJar.cs" />
+    <Compile Include="Items\Weapons\Alchemist\GaseousStaticJar.cs" />
+    <Compile Include="Items\Weapons\Alchemist\GaseousRegenerativeJar.cs" />
+    <Compile Include="Items\Weapons\Alchemist\IrritationFlask.cs" />
+    <Compile Include="Items\Weapons\Alchemist\WoodenFlaskLauncher.cs" />
+    <Compile Include="Items\Weapons\Alchemist\GaseousToxinJar.cs" />
+    <Compile Include="Items\Weapons\Summoner\AjiwrenchStaff.cs" />
+    <Compile Include="Items\Weapons\Summoner\BlueSlimeStaff.cs" />
+    <Compile Include="Items\Weapons\Summoner\RedSlimeStaff.cs" />
+    <Compile Include="Items\Weapons\Magic\LightShieldTome.cs" />
+    <Compile Include="Items\Weapons\Melee\AurawoodSword.cs" />
+    <Compile Include="Items\Weapons\Melee\TrueMuramasa.cs" />
+    <Compile Include="Items\Weapons\Thrown\PocketMimic.cs" />
+    <Compile Include="Items\Weapons\Tools\AurawoodHammer.cs" />
+    <Compile Include="Items\Weapons\Tools\FrostrunkHammer.cs" />
+    <Compile Include="Items\Weapons\Tools\AetherstumpHammer.cs" />
+    <Compile Include="Items\Weapons\Tools\GlacialPickaxe.cs" />
+    <Compile Include="Items\Weapons\Yoyos\Treasure.cs" />
+    <Compile Include="NPCs\AuraticMass.cs" />
+    <Compile Include="NPCs\Bosses\WispQueen\WispQueen.cs" />
+    <Compile Include="NPCs\Framing.cs" />
+    <Compile Include="NPCs\Friendly\Soldier.cs" />
+    <Compile Include="NPCs\GyroliteBounder.cs" />
+    <Compile Include="NPCs\GyroliteBounderDigger.cs" />
+    <Compile Include="NPCs\GyroliteSkater.cs" />
+    <Compile Include="NPCs\HeavySlime.cs" />
+    <Compile Include="NPCs\Jeruasashin.cs" />
+    <Compile Include="NPCs\PocketMimic.cs" />
+    <Compile Include="Projectiles\Alchemist\Clouds\AlchemistCloud.cs" />
+    <Compile Include="Projectiles\Alchemist\Clouds\VacuumCloud.cs" />
+    <Compile Include="Projectiles\Alchemist\GaseousStaticJar.cs" />
+    <Compile Include="Projectiles\Alchemist\GaseousVacuumJar.cs" />
+    <Compile Include="Projectiles\Alchemist\GaseousRegenerativeJar.cs" />
+    <Compile Include="Projectiles\Alchemist\Clouds\RegenerativeCloud.cs" />
+    <Compile Include="Projectiles\Alchemist\Clouds\ToxinCloud.cs" />
+    <Compile Include="Items\Weapons\Magic\GreekFireballTome.cs" />
+    <Compile Include="Items\Weapons\Magic\GreekFireTome.cs" />
+    <Compile Include="Items\Weapons\Magic\GreekHeatwaveTome.cs" />
+    <Compile Include="Items\Weapons\Magic\LifeDrainTome.cs" />
+    <Compile Include="Items\Weapons\Magic\LifeLeechTome.cs" />
+    <Compile Include="Items\Weapons\Magic\LifeSapTome.cs" />
+    <Compile Include="Items\Weapons\Magic\MagicElectricGuitar.cs" />
+    <Compile Include="Items\Weapons\Magic\StreamboltTome.cs" />
+    <Compile Include="Items\Weapons\Magic\ThickboltTome.cs" />
+    <Compile Include="Items\Weapons\Magic\TriBoltTome.cs" />
+    <Compile Include="Items\Placeable\Aurasand.cs" />
+    <Compile Include="Items\Placeable\Aurastone.cs" />
+    <Compile Include="Items\Placeable\Aurawood.cs" />
+    <Compile Include="Items\Placeable\AurawoodWall.cs" />
+    <Compile Include="Items\Placeable\GyroliteOre.cs" />
+    <Compile Include="Items\Weapons\Magic\VacuumAreaTome.cs" />
+    <Compile Include="Items\Weapons\Magic\VacuumHoleTome.cs" />
+    <Compile Include="Items\Weapons\Magic\VacuumVortexTome.cs" />
+    <Compile Include="Items\Weapons\Thrown\CactusDagger.cs" />
+    <Compile Include="Items\Weapons\Thrown\CactusSpine.cs" />
+    <Compile Include="NPCs\Whisps\AurawoodWisp.cs" />
+    <Compile Include="NPCs\Whisps\EbonwoodWisp.cs" />
+    <Compile Include="NPCs\Whisps\PalmwoodWisp.cs" />
+    <Compile Include="NPCs\Whisps\PearlwoodWisp.cs" />
+    <Compile Include="NPCs\Whisps\RichMahoganyWisp.cs" />
+    <Compile Include="NPCs\Whisps\ShadewoodWisp.cs" />
+    <Compile Include="NPCs\Whisps\Wisp.cs" />
+    <Compile Include="NPCs\Whisps\WoodWisp.cs" />
+    <Compile Include="Projectiles\Alchemist\GaseousToxinJar.cs" />
+    <Compile Include="Projectiles\Alchemist\IrritationFlask.cs" />
+    <Compile Include="Projectiles\AurasandBall.cs" />
+    <Compile Include="Projectiles\Magic\UnscratchedWispBeam_Friendly.cs" />
+    <Compile Include="Projectiles\Magic\UnscratchedWispHandle_Friendly.cs" />
+    <Compile Include="Projectiles\Summoner\AjiwrenchMinion.cs" />
+    <Compile Include="Projectiles\Summoner\BlueSlimeMinion.cs" />
+    <Compile Include="Projectiles\Magic\GreekFire.cs" />
+    <Compile Include="Projectiles\Magic\GreekFireball.cs" />
+    <Compile Include="Projectiles\Magic\GreekHeatwave.cs" />
+    <Compile Include="Projectiles\Magic\LifeDrainSphere.cs" />
+    <Compile Include="Projectiles\Magic\LifeLeechBolt.cs" />
+    <Compile Include="Projectiles\Magic\LifeLeechSphere.cs" />
+    <Compile Include="Projectiles\Magic\LifeSapDart.cs" />
+    <Compile Include="Projectiles\Summoner\HeavySlimeMinion.cs" />
+    <Compile Include="Projectiles\Summoner\MagmaticSlimeMinion.cs" />
+    <Compile Include="Projectiles\Summoner\RuneMinion.cs" />
+    <Compile Include="Projectiles\Summoner\YellowSlimeMinion.cs" />
+    <Compile Include="Projectiles\Summoner\RedSlimeMinion.cs" />
+    <Compile Include="Projectiles\Magic\Streambolt.cs" />
+    <Compile Include="Projectiles\Magic\Thickbolt.cs" />
+    <Compile Include="Projectiles\Magic\VacuumArea.cs" />
+    <Compile Include="Projectiles\Magic\VacuumHole.cs" />
+    <Compile Include="Projectiles\Magic\VacuumVortex.cs" />
+    <Compile Include="Projectiles\Thrown\CactusDagger.cs" />
+    <Compile Include="Projectiles\Thrown\CactusSpine.cs" />
+    <Compile Include="Projectiles\TrueMuramasaBeam.cs" />
+    <Compile Include="Projectiles\Yoyo\Treasure.cs" />
+    <Compile Include="Projectiles\_ProjectileExtras.cs" />
+    <Compile Include="Tiles\Aurasand.cs" />
+    <Compile Include="Tiles\Aurastone.cs" />
+    <Compile Include="Tiles\AurastoneBrick.cs" />
+    <Compile Include="Tiles\Aurawood.cs" />
+    <Compile Include="Tiles\Basalt.cs" />
+    <Compile Include="Tiles\DarkAurastoneBrick.cs" />
+    <Compile Include="Tiles\GyroliteOre.cs" />
+    <Compile Include="Tiles\LightAurastoneBrick.cs" />
+    <Compile Include="Tiles\Permafrost\PermafrostHellstoneBrick.cs" />
+    <Compile Include="Tiles\Permafrost\PermafrostObsidianBrick.cs" />
+    <Compile Include="Tiles\Permafrost\GlacialStoneOre.cs" />
+    <Compile Include="Tiles\Permafrost\MagmaCrystal.cs" />
+    <Compile Include="Tiles\Permafrost\PermafrostAsh.cs" />
+    <Compile Include="Tiles\SoulIce.cs" />
+    <Compile Include="Tiles\VulcanicCoreActive.cs" />
+    <Compile Include="Tiles\VulcanicCoreInactive.cs" />
+    <Compile Include="Tiles\VulcanicCoreSlumber.cs" />
+    <Compile Include="Walls\AurawoodWall.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Microsoft.Xna.Framework.Game.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Microsoft.Xna.Framework.Xact.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="Terraria">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
+    </Reference>
+    <Reference Include="tModLoader">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoader.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Buffs\AjiwrenchMinionBuff.png" />
+    <Content Include="Buffs\BlueSlimeMinionBuff.png" />
+    <Content Include="Buffs\LightBarrier.png" />
+    <Content Include="Buffs\LightBunker.png" />
+    <Content Include="Buffs\HeavySlimeMinionBuff.png" />
+    <Content Include="Buffs\LightShield.png" />
+    <Content Include="Buffs\MagmaticSlimeMinionBuff.png" />
+    <Content Include="Buffs\RedSlimeMinionBuff.png" />
+    <Content Include="Buffs\YellowSlimeMinionBuff.png" />
+    <Content Include="build.txt" />
+    <Content Include="Dusts\ToxinCloud.png" />
+    <Content Include="Dusts\RegenSparkle.png" />
+    <Content Include="Dusts\VortexDust.png" />
+    <Content Include="Items\Accessories\KrohitsusWings.png" />
+    <Content Include="Items\Accessories\KrohitsusWings_Wings.png" />
+    <Content Include="Items\Armor\AurawoodBreastplate.png" />
+    <Content Include="Items\Armor\AurawoodBreastplate_Arms.png" />
+    <Content Include="Items\Armor\AurawoodBreastplate_Body.png" />
+    <Content Include="Items\Armor\AurawoodBreastplate_FemaleBody.png" />
+    <Content Include="Items\Armor\AurawoodGreaves.png" />
+    <Content Include="Items\Armor\AurawoodGreaves_Legs.png" />
+    <Content Include="Items\Armor\AurawoodHelmet.png" />
+    <Content Include="Items\Armor\AurawoodHelmet_Head.png" />
+    <Content Include="Items\Armor\OreArmor\RadiantHelmet.png" />
+    <Content Include="Items\Armor\OreArmor\RadiantChestplate_Body.png" />
+    <Content Include="Items\Armor\OreArmor\RadiantHelmet_Head.png" />
+    <Content Include="Items\Armor\OreArmor\RadiantLeggings_Legs.png" />
+    <Content Include="Items\Consumables\EnsorcelledWisp.png" />
+    <Content Include="Items\Misc\GaseousToxinMixture.png" />
+    <Content Include="Items\Misc\GaseousRegenerativeMixture.png" />
+    <Content Include="Items\Misc\GaseousStaticMixture.png" />
+    <Content Include="Items\Misc\GaseousVacuumMixture.png" />
+    <Content Include="Items\Misc\SoulBlueSlime.png" />
+    <Content Include="Items\Misc\SoulMagmaSlime.png" />
+    <Content Include="Items\Misc\SoulRedSlime.png" />
+    <Content Include="Items\Misc\SoulYellowSlime.png" />
+    <Content Include="Items\Misc\SpiritOfAetheris.png" />
+    <Content Include="Items\Misc\SpiritOfAura.png" />
+    <Content Include="Items\Misc\SpiritOfTheCore.png" />
+    <Content Include="Items\Misc\WispSoul.png" />
+    <Content Include="Items\Misc\PermafrostCrystal.png" />
+    <Content Include="Items\Placeable\AurastoneBrick.png" />
+    <Content Include="Items\Placeable\Basalt.png" />
+    <Content Include="Items\Placeable\GlacialStoneOre.png" />
+    <Content Include="Items\Placeable\MagmaCrystal.png" />
+    <Content Include="Items\Placeable\PermafrostAsh.png" />
+    <Content Include="Items\Placeable\PermafrostHellstoneBrick.png" />
+    <Content Include="Items\Placeable\PermafrostObsidianBrick.png" />
+    <Content Include="Items\Weapons\Alchemist\CopperFlaskLauncher.png" />
+    <Content Include="Items\Weapons\Alchemist\NitrogenBlaster.png" />
+    <Content Include="Items\Weapons\Alchemist\SteamConcoctionPropeller.png" />
+    <Content Include="Items\Weapons\Alchemist\TinPotionLauncher.png" />
+    <Content Include="Items\Weapons\Magic\LightBarrierTome.png" />
+    <Content Include="Items\Weapons\Magic\LightBunkerTome.png" />
+    <Content Include="Items\Weapons\Magic\UnscratchedWisp.png" />
+    <Content Include="Items\Placeable\VulcanicCore.png" />
+    <Content Include="Items\Placeable\DarkAurastoneBrick.png" />
+    <Content Include="Items\Placeable\LightAurastoneBrick.png" />
+    <Content Include="Items\Placeable\SoulIce.png" />
+    <Content Include="Items\Weapons\Alchemist\GaseousRegenerativeJar.png" />
+    <Content Include="Items\Weapons\Alchemist\GaseousStaticJar.png" />
+    <Content Include="Items\Weapons\Alchemist\GaseousVacuumJar.png" />
+    <Content Include="Items\Weapons\Alchemist\IrritationFlask.png" />
+    <Content Include="Items\Weapons\Summoner\AjiwrenchStaff.png" />
+    <Content Include="Items\Weapons\Summoner\BlueSlimeStaff.png" />
+    <Content Include="Items\Weapons\Magic\LightShieldTome.png" />
+    <Content Include="Items\Weapons\Summoner\HeavySlimeStaff.png" />
+    <Content Include="Items\Weapons\Summoner\MagmaticSlimeStaff.png" />
+    <Content Include="Items\Weapons\Summoner\RedSlimeStaff.png" />
+    <Content Include="Items\Weapons\Melee\AurawoodSword.png" />
+    <Content Include="Items\Weapons\Melee\TrueMuramasa.png" />
+    <Content Include="Items\Weapons\Ranged\AurawoodBow.png" />
+    <Content Include="Items\Weapons\Summoner\YellowSlimeStaff.png" />
+    <Content Include="Items\Weapons\Thrown\PocketMimic.png" />
+    <Content Include="Items\Weapons\Tools\AetherstumpHammer.png" />
+    <Content Include="Items\Weapons\Melee\AetherstumpSword.png" />
+    <Content Include="Items\Weapons\Tools\AurawoodHammer.png" />
+    <Content Include="Items\Weapons\Tools\FrostrunkHammer.png" />
+    <Content Include="Items\Weapons\Melee\FrostrunkSword.png" />
+    <Content Include="Items\Weapons\Tools\GlacialPickaxe.png" />
+    <Content Include="Items\Weapons\Yoyos\Treasure.png" />
+    <Content Include="NPCs\AuraticMass.png" />
+    <Content Include="NPCs\Bosses\WispQueen\WispQueen.png" />
+    <Content Include="NPCs\Bosses\WispQueen\WispQueen_Center.png" />
+    <Content Include="NPCs\Friendly\Soldier_Head.png" />
+    <Content Include="NPCs\Friendly\Soldier.png" />
+    <Content Include="NPCs\GyroliteSkater.png" />
+    <Content Include="NPCs\GyroliteBounder.png" />
+    <Content Include="NPCs\GyroliteBounderDigger.png" />
+    <Content Include="NPCs\HeavySlime.png" />
+    <Content Include="NPCs\Jeruasashin.png" />
+    <Content Include="Projectiles\Alchemist\Clouds\EmptyCloud.png" />
+    <Content Include="Projectiles\Alchemist\GaseousRegenerativeJar.png" />
+    <Content Include="Items\Weapons\Alchemist\GaseousToxinJar.png" />
+    <Content Include="Items\Weapons\Alchemist\WoodenFlaskLauncher.png" />
+    <Content Include="Items\Weapons\Magic\GreekFireballTome.png" />
+    <Content Include="Items\Weapons\Magic\GreekHeatwaveTome.png" />
+    <Content Include="Items\Weapons\Magic\GreekFireTome.png" />
+    <Content Include="Items\Weapons\Magic\LifeDrainTome.png" />
+    <Content Include="Items\Weapons\Magic\LifeLeechTome.png" />
+    <Content Include="Items\Weapons\Magic\LifeSapTome.png" />
+    <Content Include="Items\Weapons\Magic\MagicElectricGuitar.png" />
+    <Content Include="Items\Weapons\Magic\StreamboltTome.png" />
+    <Content Include="Items\Weapons\Magic\ThickboltTome.png" />
+    <Content Include="Items\Weapons\Magic\TriBoltTome.png" />
+    <Content Include="Items\Placeable\Aurasand.png" />
+    <Content Include="Items\Placeable\Aurastone.png" />
+    <Content Include="Items\Placeable\Aurawood.png" />
+    <Content Include="Items\Placeable\AurawoodWall.png" />
+    <Content Include="Items\Placeable\GyroliteOre.png" />
+    <Content Include="Items\Weapons\Magic\VacuumVortexTome.png" />
+    <Content Include="Items\Weapons\Thrown\CactusDagger.png" />
+    <Content Include="Items\Weapons\Thrown\CactusSpine.png" />
+    <Content Include="NPCs\Whisps\AurawoodWisp.png" />
+    <Content Include="NPCs\Whisps\EbonwoodWisp.png" />
+    <Content Include="NPCs\Whisps\PalmwoodWisp.png" />
+    <Content Include="NPCs\Whisps\PearlwoodWisp.png" />
+    <Content Include="NPCs\Whisps\RichMahoganyWisp.png" />
+    <Content Include="NPCs\Whisps\ShadewoodWisp.png" />
+    <Content Include="NPCs\Whisps\WoodWisp.png" />
+    <Content Include="Projectiles\Alchemist\GaseousToxinJar.png" />
+    <Content Include="Projectiles\Alchemist\GaseousVacuumJar.png" />
+    <Content Include="Projectiles\Alchemist\GaseousStaticJar.png" />
+    <Content Include="Projectiles\Alchemist\IrritationFlask.png" />
+    <Content Include="Projectiles\Magic\UnscratchedWispBeam_Friendly.png" />
+    <Content Include="Projectiles\Magic\UnscratchedWispHandle_Friendly.png" />
+    <Content Include="Projectiles\Summoner\AjiwrenchMinion1.png" />
+    <Content Include="Projectiles\Summoner\AjiwrenchMinion2.png" />
+    <Content Include="Projectiles\Summoner\AjiwrenchMinion3.png" />
+    <Content Include="Projectiles\Summoner\AjiwrenchMinion.png" />
+    <Content Include="Projectiles\Magic\LifeDrain_Chain.png" />
+    <Content Include="Projectiles\Magic\LifeSapDart.png" />
+    <Content Include="Projectiles\Summoner\RedSlimeMinion.png" />
+    <Content Include="Projectiles\Summoner\BlueSlimeMinion.png" />
+    <Content Include="Projectiles\Summoner\MagmaticSlimeMinion.png" />
+    <Content Include="Projectiles\Summoner\HeavySlimeMinion.png" />
+    <Content Include="Projectiles\Summoner\HeavySlimeMinion2.png" />
+    <Content Include="Projectiles\Summoner\YellowSlimeMinion.png" />
+    <Content Include="Projectiles\TrueMuramasaBeam.png" />
+    <Content Include="Projectiles\Magic\VacuumArea.png" />
+    <Content Include="Projectiles\Magic\VacuumHole.png" />
+    <Content Include="Projectiles\Magic\Streambolt.png" />
+    <Content Include="Projectiles\Magic\GreekFire.png" />
+    <Content Include="Projectiles\Magic\GreekHeatwave.png" />
+    <Content Include="Projectiles\Magic\GreekFireball.png" />
+    <Content Include="Projectiles\AurasandBall.png" />
+    <Content Include="Projectiles\Magic\LifeLeechBolt.png" />
+    <Content Include="Projectiles\Magic\LifeLeechSphere.png" />
+    <Content Include="Projectiles\Magic\LifeDrainSphere.png" />
+    <Content Include="Projectiles\Magic\Thickbolt.png" />
+    <Content Include="Items\Weapons\Magic\VacuumAreaTome.png" />
+    <Content Include="Items\Weapons\Magic\VacuumHoleTome.png" />
+    <Content Include="Projectiles\Magic\VacuumVortex.png" />
+    <Content Include="Projectiles\Thrown\CactusDagger.png" />
+    <Content Include="Projectiles\Thrown\CactusSpine.png" />
+    <Content Include="NPCs\PocketMimic.png" />
+    <Content Include="Projectiles\Yoyo\Treasure.png" />
+    <Content Include="Tiles\Aurasand.png" />
+    <Content Include="Tiles\Aurastone.png" />
+    <Content Include="Tiles\AurastoneBrick.png" />
+    <Content Include="Tiles\Aurawood.png" />
+    <Content Include="Tiles\Basalt.png" />
+    <Content Include="Tiles\DarkAurastoneBrick.png" />
+    <Content Include="Tiles\GyroliteOre.png" />
+    <Content Include="Tiles\LightAurastoneBrick.png" />
+    <Content Include="Tiles\Permafrost\GlacialStoneOre.png" />
+    <Content Include="Tiles\Permafrost\MagmaCrystal.png" />
+    <Content Include="Tiles\Permafrost\PermafrostAsh.png" />
+    <Content Include="Tiles\Permafrost\PermafrostHellstoneBrick.png" />
+    <Content Include="Tiles\Permafrost\PermafrostObsidianBrick.png" />
+    <Content Include="Tiles\SoulIce.png" />
+    <Content Include="Tiles\VulcanicCoreInactive.png" />
+    <Content Include="Tiles\VulcanicCoreSlumber.png" />
+    <Content Include="Tiles\VulcanicCoreActive.png" />
+    <Content Include="Walls\AurawoodWall.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
