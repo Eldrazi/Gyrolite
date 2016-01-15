@@ -35,8 +35,10 @@ namespace Gyrolite.Items.Consumables
         }
         public override bool UseItem(Player player)
         {
+            player.QuickSpawnItem(ItemID.Terrarian);
+            player.QuickSpawnItem(ItemID.WoodYoyo);
+            player.QuickSpawnItem(mod.ItemType("YoyoStringBall"));
             //NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("WispQueen"));
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("HeavySlime"));
             return true;
         }
         private void SpawnOre()
