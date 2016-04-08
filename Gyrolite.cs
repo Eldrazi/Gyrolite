@@ -32,7 +32,7 @@ namespace Gyrolite
             {
                 Filters.Scene["Gyrolite:Aura"] = new Filter(new AuraScreenShaderData("FilterMiniTower").UseColor(0.4f, 0.4f, 0.9f).UseOpacity(0.6f), EffectPriority.VeryHigh);
                 SkyManager.Instance["Gyrolite:Aura"] = new AuraSky();
-            }
+            } //nom nom nom
         }
 
         public static bool NoInvasion(NPCSpawnInfo spawnInfo)
