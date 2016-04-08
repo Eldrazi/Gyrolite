@@ -1,3 +1,7 @@
-﻿author = Soulkeeper Krohitsu
-version = v0.0.1
+﻿author = The Gyrolite Team
+version = 0.0.1
 displayName = The Gyrolite Mod
+hideCode = false
+hideResources = false
+includeSource = true
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*

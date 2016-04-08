@@ -78,7 +78,7 @@ namespace Gyrolite.NPCs
         }
         public override float CanSpawn(NPCSpawnInfo spawnInfo)
         {
-            return 100;
+            return 0;
         }
         public override void HitEffect(int hitDirection, double damage)
         {

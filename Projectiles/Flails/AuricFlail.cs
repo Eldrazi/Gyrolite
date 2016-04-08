@@ -30,7 +30,7 @@ namespace Gyrolite.Projectiles.Flails
             return ProjectileAI.FlailTileCollide(projectile.whoAmI, oldVelocity);
         }
 
-        public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color lightColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             ProjectileDrawing.DrawChain(projectile.whoAmI, Main.player[projectile.owner].MountedCenter,
                 "Gyrolite/Projectiles/Chains/AuricFlail_Chain");

@@ -26,7 +26,7 @@ namespace Gyrolite.Items.Accessories
             item.accessory = true;
         }
 
-        public override void UpdateAccessory(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.wingTimeMax = 3600; // 5 minutes flight.
         }

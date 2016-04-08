@@ -203,9 +203,9 @@ namespace Gyrolite.Projectiles
         {
             Projectile projectile = Main.projectile[index];
             Texture2D texture = Main.projectileTexture[projectile.type];
-            Vector2 origin = new Vector2((float)texture.Width * 0.5f, (float)texture.Height * 0.5f);
-            SpriteEffects effect = projectile.direction == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, new Rectangle?(), lightColor, projectile.rotation, origin, projectile.scale, effect, 0);
+            Vector2 origin = new Vector2((float)texture.Width * 0.5f, (float)(texture.Height / Main.projFrames[projectile.type]) * 0.5f);
+            SpriteEffects effect = projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            Main.spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, new Rectangle?(Utils.Frame(texture, 1, Main.projFrames[projectile.type], 0, projectile.frame)), lightColor * projectile.Opacity, projectile.rotation, origin, projectile.scale, effect, 0);
         }
 
         public static void DrawSpear(int index, SpriteBatch spriteBatch, Color lightColor)
@@ -219,7 +219,6 @@ namespace Gyrolite.Projectiles
                 effects1 = SpriteEffects.FlipHorizontally;
             }
             Main.spriteBatch.Draw(Main.projectileTexture[projectile.type], new Vector2(projectile.position.X - Main.screenPosition.X + (float)(projectile.width / 2), projectile.position.Y - Main.screenPosition.Y + (float)(projectile.height / 2) + projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height)), projectile.GetAlpha(lightColor), projectile.rotation, zero, projectile.scale, effects1, 0.0f);
-
         }
     }
     public static class ProjectileAI

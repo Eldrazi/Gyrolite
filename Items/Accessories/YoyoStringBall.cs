@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+
 using Terraria;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,17 +18,9 @@ namespace Gyrolite.Items.Accessories
             item.rare = 5;
             item.accessory = true;
         }
-        public override void UpdateAccessory(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             Gyrolite.GetPlayer(player).yoyoStringBall = true;
-        }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
     }
 }

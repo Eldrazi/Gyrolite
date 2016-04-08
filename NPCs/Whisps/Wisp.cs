@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
 using Terraria.ID;
@@ -17,9 +18,9 @@ namespace Gyrolite.NPCs.Whisps
 
         public override void SetDefaults()
         {
-            Main.npcFrameCount[npc.type] = 7;
-            npc.width = 27;
-            npc.height = 30;
+            Main.npcFrameCount[npc.type] = 4;
+            npc.width = 14;
+            npc.height = 14;
 
             npc.lifeMax = 30;
             npc.damage = 10;
@@ -31,11 +32,21 @@ namespace Gyrolite.NPCs.Whisps
             npc.soundKilled = 1;
             npc.scale = 1.5F;
             npc.noGravity = true;
-            npc.noTileCollide = true;
+            npc.noTileCollide = false;
+            npc.scale = 0.8F;
+            npc.alpha = 50;
         }
 
         public override bool PreAI()
         {
+            for (int index = 5; index > 0; --index)
+            {
+                npc.oldPos[index] = npc.oldPos[index - 1];
+                npc.oldRot[index] = npc.oldRot[index - 1];
+            }
+            npc.oldPos[0] = npc.position;
+            npc.oldRot[0] = npc.rotation;
+
             if (NPC.AnyNPCs(mod.NPCType("WispQueen")))
             {
                 npc.ai[0] = NPC.FindFirstNPC(mod.NPCType("WispQueen"));
@@ -66,10 +77,10 @@ namespace Gyrolite.NPCs.Whisps
             }
             npc.TargetClosest(true);
 
-            float num1 = 4f;
+            float num1 = 2f;
             float num2 = 1.5f;
-            float num3 = num1 * (float)(1.0 + (1.0 - (double)npc.scale));
-            float num4 = num2 * (float)(1.0 + (1.0 - (double)npc.scale));
+            float num3 = num1;
+            float num4 = num2;
             if (npc.direction == -1 && (double)npc.velocity.X > -(double)num3)
             {
                 npc.velocity.X = npc.velocity.X - 0.1f;
@@ -145,13 +156,35 @@ namespace Gyrolite.NPCs.Whisps
         }
 
         public override void FindFrame(int frameHeight)
-        {
+        {            
             npc.frameCounter += 0.1F;
             npc.frameCounter %= Main.npcFrameCount[npc.type];
             int frame = (int)npc.frameCounter;
             npc.frame.Y = frame * frameHeight;
 
             npc.spriteDirection = npc.direction;
+        }
+
+        public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D texture = Main.npcTexture[npc.type];
+            Vector2 origin = new Vector2(texture.Width * 0.5f, (texture.Height / Main.npcFrameCount[npc.type]) * 0.5f);
+            SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            for (int i = 1; i < npc.oldPos.Length; ++i)
+            {
+                Vector2 vector2_2 = npc.oldPos[i];
+                Microsoft.Xna.Framework.Color color2 = Color.White * npc.Opacity;
+                color2.R = (byte)(0.5 * (double)color2.R * (double)(10 - i) / 20.0);
+                color2.G = (byte)(0.5 * (double)color2.G * (double)(10 - i) / 20.0);
+                color2.B = (byte)(0.5 * (double)color2.B * (double)(10 - i) / 20.0);
+                color2.A = (byte)(0.5 * (double)color2.A * (double)(10 - i) / 20.0);
+                Main.spriteBatch.Draw(Main.npcTexture[npc.type], new Vector2(npc.oldPos[i].X - Main.screenPosition.X + (npc.width / 2),
+                    npc.oldPos[i].Y - Main.screenPosition.Y + npc.height / 2), new Rectangle?(npc.frame), color2, npc.oldRot[i], origin, npc.scale, effects, 0.0f);
+            }
+
+            spriteBatch.Draw(texture, npc.Center - Main.screenPosition, new Rectangle?(npc.frame), Color.White * npc.Opacity, npc.rotation, origin, npc.scale, effects, 0);
+
+            return false;
         }
     }
 }

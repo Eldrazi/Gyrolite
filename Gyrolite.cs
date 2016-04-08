@@ -1,9 +1,13 @@
 ﻿using System;
 
+using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+using Terraria.Graphics.Effects;
+
+using Gyrolite.Effects.Aura;
 using Gyrolite.Items.Weapons.Magic;
 
 namespace Gyrolite
@@ -12,12 +16,23 @@ namespace Gyrolite
     {
         public static int flaskAmmo = 2000;
 
-        public override void SetModInfo(out string name, ref ModProperties properties)
+        public Gyrolite()
         {
-            name = "Gyrolite";
-            properties.Autoload = true;
-            properties.AutoloadGores = true;
-            properties.AutoloadSounds = true;
+	        Properties = new ModProperties()
+	        {                
+		        Autoload = true,
+		        AutoloadGores = true,
+		        AutoloadSounds = true
+	        };
+        }
+
+        public override void Load()
+        {
+            if (!Main.dedServ)
+            {
+                Filters.Scene["Gyrolite:Aura"] = new Filter(new AuraScreenShaderData("FilterMiniTower").UseColor(0.4f, 0.4f, 0.9f).UseOpacity(0.6f), EffectPriority.VeryHigh);
+                SkyManager.Instance["Gyrolite:Aura"] = new AuraSky();
+            }
         }
 
         public static bool NoInvasion(NPCSpawnInfo spawnInfo)

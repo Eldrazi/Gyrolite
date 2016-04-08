@@ -40,13 +40,5 @@ namespace Gyrolite.Items.Weapons.Summoner
             Projectile.NewProjectile(position.X, position.Y, 0, 0, type, 10, 0.5F, player.whoAmI, Main.rand.Next(1, 4), 0f);
             return false;
         }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
 }

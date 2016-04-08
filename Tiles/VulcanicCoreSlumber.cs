@@ -58,7 +58,6 @@ namespace Gyrolite.Tiles
             }
         }
 
-
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
             switch(curFrame)
@@ -86,7 +85,7 @@ namespace Gyrolite.Tiles
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
-        {
+        {            
             Item.NewItem(i * 16, j * 16, 80, 80, mod.ItemType("VulcanicCoreSlumber"));
         }
     }

@@ -17,7 +17,6 @@ namespace Gyrolite.Projectiles.Magic
             projectile.aiStyle = 48;
             projectile.friendly = true;
             projectile.magic = true;
-            projectile.extraUpdates = 100;
             projectile.timeLeft = 100;
         }
 

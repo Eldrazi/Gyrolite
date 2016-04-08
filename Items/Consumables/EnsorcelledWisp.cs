@@ -20,7 +20,7 @@ namespace Gyrolite.Items.Consumables
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 4;
-            item.useSound = 44;
+            item.useSound = 44;            
             item.consumable = true;
         }
 
@@ -34,20 +34,20 @@ namespace Gyrolite.Items.Consumables
             return !NPC.AnyNPCs(mod.NPCType("WispQueen"));
         }
         public override bool UseItem(Player player)
-        {
-            //NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("WispQueen"));
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("HeavySlime"));
+        {            
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("WispQueen"));
             return true;
         }
+
         private void SpawnOre()
         {
-            int lx = 200;
-            int hx = Main.maxTilesX - 200;
-            int ly = (int)Main.worldSurface;
-            int hy = Main.maxTilesY - 200;
+            int minX = 200;
+            int maxX = Main.maxTilesX - 200;
+            int minY = (int)Main.worldSurface;
+            int maxY = Main.maxTilesY - 200;
 
-            int x = WorldGen.genRand.Next(lx, hx);
-            int y = WorldGen.genRand.Next(ly, hy);
+            int x = WorldGen.genRand.Next(minX, maxX);
+            int y = WorldGen.genRand.Next(minY, maxY);
 
             int minSpread = 2;
             int maxSpread = 8;
@@ -58,7 +58,10 @@ namespace Gyrolite.Items.Consumables
             int s = WorldGen.genRand.Next(minSpread, maxSpread + 1);
             int f = WorldGen.genRand.Next(minFreq, maxFreq + 1);
 
-            WorldGen.OreRunner(x, y, s, f, (ushort)mod.TileType("GyroliteOre"));
+            for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
+            {
+                WorldGen.OreRunner(x, y, s, f, (ushort)mod.TileType("GyroliteOre"));
+            }
         }
 
         public override void AddRecipes()

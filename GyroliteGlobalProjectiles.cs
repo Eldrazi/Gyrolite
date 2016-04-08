@@ -12,7 +12,7 @@ namespace Gyrolite
     class GyroliteGlobalProjectiles : GlobalProjectile
     {
         public override bool PreAI(Projectile projectile)
-        {
+        {            
             #region Rewriting Yoyo AIs
             if (projectile.type == 534 || (projectile.type >= 541 && projectile.type <= 555) || (projectile.type >= 562 && projectile.type <= 564) || projectile.type == 603)
             {
@@ -132,6 +132,7 @@ namespace Gyrolite
                 }
             }
             #endregion
+
             return true;
         }
     }

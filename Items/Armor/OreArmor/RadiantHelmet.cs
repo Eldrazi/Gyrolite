@@ -34,7 +34,7 @@ namespace Gyrolite.Items.Armor.OreArmor
         public override void UpdateArmorSet(Player player)
         {
             player.statDefense += 7;
-            player.setBonus = "7 defence";
+            player.setBonus = "7 defence";            
         }
 
         public override void AddRecipes()

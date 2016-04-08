@@ -14,7 +14,7 @@ namespace Gyrolite.Tiles
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
             Main.tileSand[Type] = true;
-            Main.tileLighted[Type] = true;
+            Main.tileLighted[Type] = true;            
             
             drop = mod.ItemType("Aurasand");
         }

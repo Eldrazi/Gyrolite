@@ -175,7 +175,6 @@ namespace Gyrolite.Projectiles.Summoner
             if ((double)projectile.rotation < -6.28)
             {
                 projectile.rotation += 6.28f;
-                return false;
             }
 
             return false;
