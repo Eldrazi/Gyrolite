@@ -36,6 +36,8 @@ namespace Gyrolite
         public int frostbiteMax;
         public bool frostbiteImmune;
 
+        public int lunarHeartStack;
+
         public bool ZoneAura;
         public bool ZonePermafrost;
 
@@ -110,7 +112,7 @@ namespace Gyrolite
                     Projectile.NewProjectile(player.Center.X, player.Center.Y, dir.X, dir.Y, ringEffects[0], 25, 0, player.whoAmI, 0);
                 }
             }
-
+            
             if (Main.myPlayer == player.whoAmI)
             {
                 if (!this.frostbiteImmune && this.ZonePermafrost && !player.immune)
@@ -153,6 +155,16 @@ namespace Gyrolite
         public override void UpdateBiomeVisuals()
         {
             player.ManageSpecialBiomeVisuals("Gyrolite:Aura", this.ZoneAura);
+        }
+
+        public override void SaveCustomData(System.IO.BinaryWriter writer)
+        {
+            writer.Write(lunarHeartStack);
+        }
+        public override void LoadCustomData(System.IO.BinaryReader reader)
+        {
+            lunarHeartStack = reader.Read();
+            player.statLifeMax += lunarHeartStack * 50;
         }
 
         #region Visuals
