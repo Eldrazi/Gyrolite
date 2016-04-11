@@ -21,7 +21,7 @@ namespace Gyrolite.Tiles
             TileObjectData.newTile.Height = 5;
             TileObjectData.newTile.Width = 5;
             TileObjectData.newTile.CoordinateHeights = new int[] { 18, 18, 18, 18, 18 };
-            TileObjectData.addTile(Type);           
+            TileObjectData.addTile(Type);
 
             animationFrameHeight = 100;
         }

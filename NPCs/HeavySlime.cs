@@ -1,9 +1,9 @@
 ﻿using System;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 using Terraria;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -72,14 +72,17 @@ namespace Gyrolite.NPCs
             npc.alpha = 80;
             npc.knockBackResist = 0.6f;
         }
+
         public override void FindFrame(int frameHeight)
         {
             Framing.Slime(npc, frameHeight);
         }
+
         public override float CanSpawn(NPCSpawnInfo spawnInfo)
         {
             return 0;
         }
+
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)
@@ -97,10 +100,12 @@ namespace Gyrolite.NPCs
                 return;
             }
         }
+
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             Explode();
         }
+
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D tx = Main.itemTexture[ItemID.Grenade];

@@ -132,6 +132,8 @@ namespace Gyrolite
         public static int minPermafrostZoneTiles = 80;
         public static int permafrostTiles = 0;
 
+        public const int AuraConversionType = 12;
+
         public override void ResetNearbyTileEffects()
         {
             auraTiles = 0;
@@ -823,6 +825,101 @@ namespace Gyrolite
                     if (Main.netMode == 2)
                     {
                         NetMessage.SendTileSquare(-1, x, (int)((double)y - (double)height * 0.5), height + 1);
+                    }
+                }
+            }
+        }
+        
+        public static void Convert(int centerX, int centerY, int conversionType, int size = 4)
+        {
+            Mod gm = ModLoader.GetMod("Gyrolite");
+
+            for (int x = centerX - size; x <= centerX + size; ++x)
+            {
+                for (int y = centerY - size; y <= centerY + size; ++y)
+                {
+                    if (WorldGen.InWorld(x, y, 1) && Math.Abs(x - centerX) + Math.Abs(y - centerY) < 6)
+                    {
+                        int type = (int)Main.tile[x, y].type;
+                        int wall = (int)Main.tile[x, y].wall;
+
+                        if (conversionType == GyroliteWorld.AuraConversionType)
+                        {
+                            /*if (WallID.Sets.Conversion.Grass[wall] && wall != 70)
+                            {
+                                Main.tile[x, y].wall = 70;
+                                WorldGen.SquareWallFrame(x, y, true);
+                                NetMessage.SendTileSquare(-1, x, y, 1);
+                            }
+                            else if (WallID.Sets.Conversion.Stone[wall] && wall != 28)
+                            {
+                                Main.tile[x, y].wall = 28;
+                                WorldGen.SquareWallFrame(x, y, true);
+                                NetMessage.SendTileSquare(-1, x, y, 1);
+                            }
+                            else if (WallID.Sets.Conversion.HardenedSand[wall] && wall != 219)
+                            {
+                                Main.tile[x, y].wall = 219;
+                                WorldGen.SquareWallFrame(x, y, true);
+                                NetMessage.SendTileSquare(-1, x, y, 1);
+                            }
+                            else if (WallID.Sets.Conversion.Sandstone[wall] && wall != 222)
+                            {
+                                Main.tile[x, y].wall = 222;
+                                WorldGen.SquareWallFrame(x, y, true);
+                                NetMessage.SendTileSquare(-1, x, y, 1);
+                            }*/
+                            if ((Main.tileMoss[type] || TileID.Sets.Conversion.Stone[type]) && type != gm.TileType("Aurastone"))
+                            {
+                                Main.tile[x, y].type = (ushort)gm.TileType("Aurastone");
+                                WorldGen.SquareTileFrame(x, y, true);
+                                NetMessage.SendTileSquare(-1, x, y, 1);
+                            }
+                            else if (TileID.Sets.Conversion.Grass[type] && type != gm.TileType("Auragrass"))
+                            {
+                                Main.tile[x, y].type = (ushort)gm.TileType("Auragrass");
+                                WorldGen.SquareTileFrame(x, y, true);
+                                NetMessage.SendTileSquare(-1, x, y, 1);
+                            }
+                            else if (TileID.Sets.Conversion.Ice[type] && type != gm.TileType("SoulIce"))
+                            {
+                                Main.tile[x, y].type = (ushort)gm.TileType("SoulIce");
+                                WorldGen.SquareTileFrame(x, y, true);
+                                NetMessage.SendTileSquare(-1, x, y, 1);
+                            }
+                            else if (TileID.Sets.Conversion.Sand[type] && type != gm.TileType("Aurasand"))
+                            {
+                                Main.tile[x, y].type = (ushort)gm.TileType("Aurasand");
+                                WorldGen.SquareTileFrame(x, y, true);
+                                NetMessage.SendTileSquare(-1, x, y, 1);
+                            }
+                            /*else if (TileID.Sets.Conversion.HardenedSand[type] && type != 402)
+                            {
+                                Main.tile[x, y].type = 402;
+                                WorldGen.SquareTileFrame(x, y, true);
+                                NetMessage.SendTileSquare(-1, x, y, 1);
+                            }
+                            else if (TileID.Sets.Conversion.Sandstone[type] && type != 403)
+                            {
+                                Main.tile[x, y].type = 403;
+                                WorldGen.SquareTileFrame(x, y, true);
+                                NetMessage.SendTileSquare(-1, x, y, 1);
+                            }
+                            else if (TileID.Sets.Conversion.Thorn[type])
+                            {
+                                WorldGen.KillTile(x, y, false, false, false);
+                                if (Main.netMode == 1)
+                                {
+                                    NetMessage.SendData(17, -1, -1, "", 0, (float)x, (float)y, 0f, 0, 0, 0);
+                                }
+                            }*/
+                            /*if (type == 59 && (Main.tile[x - 1, y].type == gm.TileType("Auragrass") || Main.tile[x + 1, y].type == gm.TileType("Auragrass") || Main.tile[x, y - 1].type == gm.TileType("Auragrass") || Main.tile[x, y + 1].type == gm.TileType("Auragrass")))
+                            {
+                                Main.tile[x, y].type = 0;
+                                WorldGen.SquareTileFrame(x, y, true);
+                                NetMessage.SendTileSquare(-1, x, y, 1);
+                            }*/
+                        }
                     }
                 }
             }

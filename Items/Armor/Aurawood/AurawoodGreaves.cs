@@ -29,7 +29,7 @@ namespace Gyrolite.Items.Armor.Aurawood
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock);
+            recipe.AddIngredient(null, "Aurawood", 25);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

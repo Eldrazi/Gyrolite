@@ -46,20 +46,5 @@ namespace Gyrolite.Items.Accessories
             speed = 10f;
             acceleration *= 3f;
         }
-
-        public override void WingUpdate(Player player, bool inUse)
-        {
-            //if (inUse)
-                //ModDust.NewDust(player.position, player.width, player.height, mod, "Flame", 0, 0, 0, Color.Red);
-            base.WingUpdate(player, inUse);
-        }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
 }

@@ -77,52 +77,51 @@ namespace Gyrolite.NPCs.Whisps
             }
             npc.TargetClosest(true);
 
-            float num1 = 2f;
-            float num2 = 1.5f;
-            float num3 = num1;
-            float num4 = num2;
-            if (npc.direction == -1 && (double)npc.velocity.X > -(double)num3)
+            float xSpeed = 3;
+            float ySpeed = 3;
+
+            if (npc.direction == -1 && npc.velocity.X > -xSpeed)
             {
                 npc.velocity.X = npc.velocity.X - 0.1f;
-                if ((double)npc.velocity.X > (double)num3)
+                if (npc.velocity.X > xSpeed)
                     npc.velocity.X = npc.velocity.X - 0.1f;
-                else if ((double)npc.velocity.X > 0.0)
+                else if (npc.velocity.X > 0.0)
                     npc.velocity.X = npc.velocity.X + 0.05f;
-                if ((double)npc.velocity.X < -(double)num3)
-                    npc.velocity.X = -num3;
+                if (npc.velocity.X < -xSpeed)
+                    npc.velocity.X = -xSpeed;
             }
-            else if (npc.direction == 1 && (double)npc.velocity.X < (double)num3)
+            else if (npc.direction == 1 && npc.velocity.X < xSpeed)
             {
                 npc.velocity.X = npc.velocity.X + 0.1f;
-                if ((double)npc.velocity.X < -(double)num3)
+                if (npc.velocity.X < -xSpeed)
                     npc.velocity.X = npc.velocity.X + 0.1f;
-                else if ((double)npc.velocity.X < 0.0)
+                else if (npc.velocity.X < 0.0)
                     npc.velocity.X = npc.velocity.X - 0.05f;
-                if ((double)npc.velocity.X > (double)num3)
-                    npc.velocity.X = num3;
+                if (npc.velocity.X > xSpeed)
+                    npc.velocity.X = xSpeed;
             }
-            if (npc.directionY == -1 && (double)npc.velocity.Y > -(double)num4)
+            if (npc.directionY == -1 && npc.velocity.Y > -ySpeed)
             {
-                npc.velocity.Y = npc.velocity.Y - 0.04f;
-                if ((double)npc.velocity.Y > (double)num4)
-                    npc.velocity.Y = npc.velocity.Y - 0.05f;
-                else if ((double)npc.velocity.Y > 0.0)
+                npc.velocity.Y = npc.velocity.Y - 0.06f;
+                if (npc.velocity.Y > ySpeed)
+                    npc.velocity.Y = npc.velocity.Y - 0.06f;
+                else if (npc.velocity.Y > 0.0)
                     npc.velocity.Y = npc.velocity.Y + 0.03f;
-                if ((double)npc.velocity.Y < -(double)num4)
-                    npc.velocity.Y = -num4;
+                if (npc.velocity.Y < -ySpeed)
+                    npc.velocity.Y = -ySpeed;
             }
-            else if (npc.directionY == 1 && (double)npc.velocity.Y < (double)num4)
+            else if (npc.directionY == 1 && npc.velocity.Y < ySpeed)
             {
-                npc.velocity.Y = npc.velocity.Y + 0.04f;
-                if ((double)npc.velocity.Y < -(double)num4)
-                    npc.velocity.Y = npc.velocity.Y + 0.05f;
-                else if ((double)npc.velocity.Y < 0.0)
+                npc.velocity.Y = npc.velocity.Y + 0.06f;
+                if (npc.velocity.Y < -ySpeed)
+                    npc.velocity.Y = npc.velocity.Y + 0.06f;
+                else if (npc.velocity.Y < 0.0)
                     npc.velocity.Y = npc.velocity.Y - 0.03f;
-                if ((double)npc.velocity.Y > (double)num4)
-                    npc.velocity.Y = num4;
+                if (npc.velocity.Y > ySpeed)
+                    npc.velocity.Y = ySpeed;
             }
 
-            if (Main.rand.Next(40) == 0)
+            if (Main.rand.Next(20) == 0)
             {
                 int index = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y + (float)npc.height * 0.25f), npc.width, (int)((double)npc.height * 0.5), 5, npc.velocity.X, 2f, 0, new Color(), 1f);
                 Dust dust1 = Main.dust[index];

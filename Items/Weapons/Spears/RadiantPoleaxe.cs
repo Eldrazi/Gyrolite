@@ -31,7 +31,6 @@ namespace Gyrolite.Items.Weapons.Spears
 
             item.shoot = mod.ProjectileType("RadiantPoleaxe");
             item.shootSpeed = 5.6F;
-
             item.useSound = 1;
         }
 
