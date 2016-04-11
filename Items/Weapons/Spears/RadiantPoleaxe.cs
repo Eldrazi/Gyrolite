@@ -11,11 +11,7 @@ namespace Gyrolite.Items.Weapons.Spears
     {
         public override void SetDefaults()
         {
-<<<<<<< HEAD
             item.name = "Radiant Poleaxe";
-=======
-            item.name = "RadiantPoleaxe";
->>>>>>> origin/master
             item.width = 40;
             item.height = 40;
             item.toolTip = "A poleaxe imbued with radiant forces.";
@@ -35,10 +31,7 @@ namespace Gyrolite.Items.Weapons.Spears
 
             item.shoot = mod.ProjectileType("RadiantPoleaxe");
             item.shootSpeed = 5.6F;
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
             item.useSound = 1;
         }
 

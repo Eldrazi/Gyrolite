@@ -1,5 +1,7 @@
 ﻿using System;
 
+using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,6 +16,8 @@ namespace Gyrolite.Tiles
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = true;
+
+            AddMapEntry(Color.Black, "Basalt");
 
             drop = mod.ItemType("Basalt");
         }

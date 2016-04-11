@@ -1,6 +1,9 @@
 ﻿using System;
+using System.IO;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 using Terraria;
 using Terraria.ID;
@@ -15,6 +18,8 @@ namespace Gyrolite
     public class Gyrolite : Mod
     {
         public static int flaskAmmo = 2000;
+        public static Effect effect;
+        public static ContentManager manager;
 
         public Gyrolite()
         {
@@ -28,11 +33,18 @@ namespace Gyrolite
 
         public override void Load()
         {
+            manager = new ContentManager(Main.instance.Content.ServiceProvider, ModLoader.ModPath);
             if (!Main.dedServ)
             {
                 Filters.Scene["Gyrolite:Aura"] = new Filter(new AuraScreenShaderData("FilterMiniTower").UseColor(0.4f, 0.4f, 0.9f).UseOpacity(0.6f), EffectPriority.VeryHigh);
                 SkyManager.Instance["Gyrolite:Aura"] = new AuraSky();
-            } //nom nom nom
+            }
+            effect = manager.Load<Effect>("gyrolite_e");
+        }
+
+        public override void Unload()
+        {
+            manager.Unload();
         }
 
         public static bool NoInvasion(NPCSpawnInfo spawnInfo)

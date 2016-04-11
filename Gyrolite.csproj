@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Buffs\Alchemist\AnkhBuff.cs" />
     <Compile Include="Buffs\Alchemist\AmplifiedSenseBuff.cs" />
@@ -126,6 +129,7 @@
     <Compile Include="Items\Weapons\Flails\SoulsticeFlail.cs" />
     <Compile Include="Items\Weapons\Flails\CoreFlail.cs" />
     <Compile Include="Items\Weapons\Flails\NecroFlail.cs" />
+    <Compile Include="Items\Weapons\Magic\Chloroblast.cs" />
     <Compile Include="Items\Weapons\Magic\LightBunkerTome.cs" />
     <Compile Include="Items\Weapons\Magic\LightBarrierTome.cs" />
     <Compile Include="Items\Weapons\Magic\UnscratchedWisp.cs" />
@@ -216,6 +220,7 @@
     <Compile Include="Projectiles\Flails\SoulsticeFlail.cs" />
     <Compile Include="Projectiles\Flails\CoreFlail.cs" />
     <Compile Include="Projectiles\Flails\NecroFlail.cs" />
+    <Compile Include="Projectiles\Magic\ChloroblastSpore.cs" />
     <Compile Include="Projectiles\Magic\Rings\RingProjectile_ShadowFire.cs" />
     <Compile Include="Projectiles\Magic\Rings\RingProjectile_FireBolt.cs" />
     <Compile Include="Projectiles\Magic\Rings\RingProjectile_Frostfire.cs" />
@@ -280,6 +285,7 @@
     <Compile Include="Tiles\VulcanicCoreInactive.cs" />
     <Compile Include="Tiles\VulcanicCoreSlumber.cs" />
     <Compile Include="Walls\AurawoodWall.cs" />
+    <Compile Include="Walls\BasaltWall.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
@@ -330,6 +336,7 @@
     <Content Include="Effects\Rings\RingEffect_5.png" />
     <Content Include="Effects\Specials\FrozenSolidPlayer.png" />
     <Content Include="Effects\Trees\Permafrost\PermafrostTreetops.png" />
+    <Content Include="gyroliteEffect.fx" />
     <Content Include="Items\Accessories\KrohitsusWings.png" />
     <Content Include="Items\Accessories\KrohitsusWings_Wings.png" />
     <Content Include="Items\Accessories\Rings\CursedFireRing.png" />
@@ -409,6 +416,7 @@
     <Content Include="Items\Weapons\Flails\NecroFlail.png" />
     <Content Include="Items\Weapons\Flails\SoulsticeFlail.png" />
     <Content Include="Items\Weapons\Flails\SteamFlail.png" />
+    <Content Include="Items\Weapons\Magic\Chloroblast.png" />
     <Content Include="Items\Weapons\Magic\LightBarrierTome.png" />
     <Content Include="Items\Weapons\Magic\LightBunkerTome.png" />
     <Content Include="Items\Weapons\Magic\UnscratchedWisp.png" />
@@ -504,6 +512,7 @@
     <Content Include="Projectiles\Flails\RadiantFlail.png" />
     <Content Include="Projectiles\Flails\SoulsticeFlail.png" />
     <Content Include="Projectiles\Flails\SteamFlail.png" />
+    <Content Include="Projectiles\Magic\ChloroblastSpore.png" />
     <Content Include="Projectiles\Magic\Rings\RingProjectile_FireBolt.png" />
     <Content Include="Projectiles\Magic\Rings\RingProjectile_Frostfire.png" />
     <Content Include="Projectiles\Magic\Rings\RingProjectile_Ichor.png" />
@@ -575,9 +584,10 @@
     <Content Include="Tiles\VulcanicCoreSlumber.png" />
     <Content Include="Tiles\VulcanicCoreActive.png" />
     <Content Include="Walls\AurawoodWall.png" />
+    <Content Include="Walls\BasaltWall.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Effects\ZoneBackgrounds\" />
+    <Folder Include="Items\ZoneBackgrounds\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

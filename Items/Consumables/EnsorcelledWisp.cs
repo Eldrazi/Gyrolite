@@ -34,16 +34,12 @@ namespace Gyrolite.Items.Consumables
             return !NPC.AnyNPCs(mod.NPCType("WispQueen"));
         }
         public override bool UseItem(Player player)
-<<<<<<< HEAD
         {            
             NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("WispQueen"));
-=======
-        {
             player.QuickSpawnItem(ItemID.Terrarian);
             player.QuickSpawnItem(ItemID.WoodYoyo);
             player.QuickSpawnItem(mod.ItemType("YoyoStringBall"));
             //NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("WispQueen"));
->>>>>>> origin/master
             return true;
         }
 

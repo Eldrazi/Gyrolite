@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,6 +13,119 @@ namespace Gyrolite
 {
     public class GyroliteWorld : ModWorld
     {
+        public enum LiquidType
+        {
+            Water,
+            Lava
+        }
+        public enum Direction
+        {
+            Left,
+            Right
+        }
+
+        public static Direction RandomDirection()
+        {
+            return Main.rand.Next(2) == 0 ? Direction.Left : Direction.Right;
+        }
+
+        public static class Shape
+        {
+            public static void Circle(int x, int y, int radius, ushort tileType, bool chanceEdges = true, int chanceEdgeChance = 3, bool missTopHalf = false, bool wall = false, int wallType = 0) //chance edges means that it will occasionally not place tiles nearer the edge = not perfect circle
+            {
+                int yStart = y - radius;
+                if (missTopHalf)
+                {
+                    yStart = y - 1;
+                }
+                for (int i = x - radius; i < x + radius; i++)
+                {
+                    for (int j = yStart; j < y + radius; j++)
+                    {
+                        float distance = Math.Abs(Vector2.Distance(new Vector2(i, j), new Vector2(x, y)));
+                        if (distance > radius - 1.1f)
+                        {
+                            if (Main.rand.Next(chanceEdgeChance) == 0)
+                            {
+                                goto Fin;
+                            }
+                        }
+                        if (distance < radius)
+                        {
+                            if (j == y - 1 && missTopHalf && Main.rand.Next(3) == 0)
+                            {
+                                goto Fin;
+                            }
+                            if (Main.tile[i, j] == null)
+                                Main.tile[i, j] = new Tile();
+                            Main.tile[i, j].active(false);
+                            Main.tile[i, j].halfBrick(false);
+                            Main.tile[i, j].slope(0);
+                            Main.tile[i, j].liquid = 0;
+                            if (tileType == 9999)
+                            {
+                                goto Fin;
+                            }
+                            WorldGen.PlaceTile(i, j, tileType, false, true);
+                            if (wall && distance < radius - 1.04f) //not the last tile around the circle hopefully.
+                            {
+                                WorldGen.KillWall(i, j);
+                                WorldGen.PlaceWall(i, j, wallType);
+                            }
+                        }
+                        Fin:;
+                    }
+                }
+            }
+            
+            //Made a new method for this because I felt like it :P
+            public static void CircleOfLiquid(int x, int y, int radius, LiquidType liquidType, bool chanceEdges = true, int chanceEdgeChance = 3)
+            {
+                int yStart = y - radius;
+                for (int i = x - radius; i < x + radius; i++)
+                {
+                    for (int j = yStart; j < y + radius; j++)
+                    {
+                        float distance = Math.Abs(Vector2.Distance(new Vector2(i, j), new Vector2(x, y)));
+                        if (distance > radius - 1.1f)
+                        {
+                            if (Main.rand.Next(chanceEdgeChance) == 0)
+                            {
+                                goto Fin;
+                            }
+                        }
+                        if (distance < radius)
+                        {
+                            if (Main.tile[i, j] == null)
+                                Main.tile[i, j] = new Tile();
+                            Main.tile[i, j].active(false);
+                            if (liquidType == LiquidType.Lava)
+                            {
+                                Main.tile[i, j].lava(true);
+                            }
+                            else
+                            {
+                                Liquid.AddWater(i, j);
+                            }
+                            Main.tile[i, j].liquid = 255;
+                        }
+                    Fin: ;
+                    }
+                }
+            }
+        }
+
+        //@Eldrazi
+        //Wasn't really sure where to put this but it annoys me when there isn't one so: (can't do extensions :/)
+        public static float NextFloat(Random rand, float minimum, float maximum)
+        {
+            if (maximum < minimum)
+            {
+                throw new ArgumentException("Maximum must be higher than the minimum.");
+            }
+            return (float)rand.NextDouble() * (maximum - minimum) + minimum;
+        } 
+
         public static int minAuraZoneTiles = 50;
         public static int auraTiles = 0;
 
@@ -38,6 +153,95 @@ namespace Gyrolite
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
             int PermafrostIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes")) + 1;
+            tasks.Insert(PermafrostIndex, new PassLegacy("Volcano", delegate(GenerationProgress progress)
+            {
+                progress.Message = "Generating Volcano...";
+
+                Mod mod = ModLoader.GetMod("Gyrolite");
+                int xPoint = 2600; //randomize in future
+                Begin:
+                int yPoint = 0;
+                for (int y = 0; y < 800; y++)
+                {
+                    if (Main.tile[xPoint, y] == null) Main.tile[xPoint, y] = new Tile();
+                    if (Main.tile[xPoint, y].active())
+                    {
+                        for (int newY = y; newY < y + 60; newY++)
+                        {
+                            if (Main.tile[xPoint, newY].type == TileID.Cloud || Main.tile[xPoint - 3, newY].type == TileID.Cloud || Main.tile[xPoint + 3, newY].type == TileID.Cloud)
+                            {
+                                //xPoint = Main.rand.Next(800, Main.maxTilesX - 800);
+                                xPoint = 1600;
+                                goto Begin;
+                            }
+                        }
+                        yPoint = y - 90;
+                        if (yPoint < 60)
+                        {
+                            yPoint += 30;
+                        }
+                        break;
+                    }
+                }
+                float radius = Main.rand.Next(25, 32);
+                float radiusAdditive = Main.rand.Next(12, 19); //add to the radius to widen the volcano
+                int num = 0;
+                int height = Main.rand.Next(280, 360);
+                for (int i = yPoint; i < yPoint + height; i += 7)
+                {
+                    progress.Set(0.5f);
+                    num += 4;
+                    radius += radiusAdditive * 0.062f * (num / 10);
+                    if (radius > 70)
+                    {
+                        radius -= ((radiusAdditive * 0.062f * (num / 10)) / 2); //only add half radius if above 45
+                    }
+                    if (radius > 90)
+                    {
+                        radius = 90 + Main.rand.Next(-7, 8);
+                    }
+                    if (i < yPoint + 15)
+                    {
+                        Shape.Circle(xPoint, i, (int)radius, (ushort)mod.TileType("Basalt"), true, 4, true, true, mod.WallType("BasaltWall"));
+                        i += 5;
+                    }
+                    else
+                        Shape.Circle(xPoint, i, (int)radius, (ushort)mod.TileType("Basalt"), true, 3, true, true, mod.WallType("BasaltWall"));
+                    if (i < yPoint + height - 90 && Main.rand.Next(14) == 0)
+                        SideVent(xPoint, i, RandomDirection(), Main.rand.Next(3, 5), yPoint);
+                }
+
+                //CHASMS
+
+                VolcanoChasm(xPoint + Main.rand.Next(-30, -14), yPoint + height - Main.rand.Next(40, 70), Direction.Left);
+                VolcanoChasm(xPoint + Main.rand.Next(13, 31), yPoint + height - Main.rand.Next(50, 80), Direction.Right);
+                if (Main.rand.Next(2) == 0)
+                {
+                    Direction newDirection = RandomDirection();
+                    VolcanoChasm(xPoint + Main.rand.Next(13, 31), yPoint + height - Main.rand.Next(20, 30),  newDirection, 18, -2, 3);
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        Direction newerDirection = newDirection == Direction.Left ? Direction.Right : Direction.Left;
+                        VolcanoChasm(xPoint + Main.rand.Next(13, 31), yPoint + height - Main.rand.Next(20, 30) , newerDirection, 18, -2, 3);
+                    }
+                }
+
+                //
+
+                radius = Main.rand.Next(8, 14);
+                for (int i = yPoint; i < yPoint + height; i += 7)
+                {
+                    if (i < yPoint + height - 60)
+                        Shape.Circle(xPoint, i, (int)radius + Main.rand.Next(-3, 4), (ushort)(9999), true, 2); //inside tunnel :P
+                    else
+                        Shape.Circle(xPoint + Main.rand.Next(-10, 11), i, (int)(radius * 4) + Main.rand.Next(-18, 7), (ushort)9999, true, 4);
+                    if (i > yPoint + height - 60)
+                    {
+                        Shape.CircleOfLiquid(xPoint, i, (int)radius - 4, LiquidType.Lava, false, 4);
+                    }
+                }
+            }));
+            #region permafrost
             tasks.Insert(PermafrostIndex, new PassLegacy("Permafrost", delegate(GenerationProgress progress)
             {
                 progress.Message = "Generating Permafrost";
@@ -97,6 +301,66 @@ namespace Gyrolite
                 }
                 #endregion
             }));
+            #endregion
+        }
+
+        public static void SideVent(int x, int y, Direction direction, int radius, int maxHeight, int min = -5, int max = 6)
+        {
+            int amount = Main.rand.Next(80, 150);
+            for (int i = 0; i < amount; i++)
+            {
+                if (i < 12)
+                {
+                    Shape.CircleOfLiquid(x, y, radius, LiquidType.Lava, true, Main.rand.Next(3, 5));
+                    if (!Main.tile[x - radius, y-radius].active() || !Main.tile[x + radius, y-radius].active())
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    Shape.Circle(x, y, radius, (ushort)9999, true, Main.rand.Next(3, 5));
+                    if (!Main.tile[x - radius, y - radius].active() || !Main.tile[x + radius, y - radius].active())
+                    {
+                        break;
+                    }
+                }
+                int xOffsetMinimum = direction == Direction.Left ? min : -1;
+                int xOffsetMaximum = direction == Direction.Left ? 1 : max;
+                int xOffset = Main.rand.Next(xOffsetMinimum, xOffsetMaximum);
+                x += xOffset;
+                y -= Main.rand.Next(1, 4);
+                if (y < maxHeight + 20)
+                {
+                    break;
+                }
+            }
+        }
+
+        public static void VolcanoChasm(int x, int y, Direction favouredDirection, int baseRadius = 16, int min = -4, int max = 5)
+        {
+            Mod mod = ModLoader.GetMod("Gyrolite");
+            int amount = Main.rand.Next(350, 450);
+            List<Vector2> TheMostUnOptimizedWayOfDoingThisPossibleButIDontReallyCareAtThisPoint = new List<Vector2>();
+            TheMostUnOptimizedWayOfDoingThisPossibleButIDontReallyCareAtThisPoint.Add(new Vector2(x, y));
+            for (int i = 0; i < amount; i++)
+            {
+                Shape.Circle(x, y, baseRadius + Main.rand.Next(-3, 4), (ushort)mod.TileType("Basalt"));
+                int xOffsetMinimum = favouredDirection == Direction.Left ? min : -1;
+                int xOffsetMaximum = favouredDirection == Direction.Left ? 1 : max;
+                int xOffset = Main.rand.Next(xOffsetMinimum, xOffsetMaximum);
+                x += xOffset;
+                y += 3;
+                if (y > Main.maxTilesY - 230)
+                {
+                    break;
+                }
+                TheMostUnOptimizedWayOfDoingThisPossibleButIDontReallyCareAtThisPoint.Add(new Vector2(x, y));
+            }
+            foreach(Vector2 v in TheMostUnOptimizedWayOfDoingThisPossibleButIDontReallyCareAtThisPoint)
+            {
+                Shape.CircleOfLiquid((int)v.X, (int)v.Y, 10 + Main.rand.Next(-4, 3), LiquidType.Lava);
+            }
         }
 
         public void GrowTree(int x, int minY, ushort treeType, int[] tilesAllowGrowth, int sapplingType = 0, int minTreeHeight = 5, int maxTreeHeight = 16)
